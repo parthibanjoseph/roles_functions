@@ -1,0 +1,76 @@
+<style type="text/css">
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+   max-height: 100%;
+   height: 100%;
+   width: auto;
+   margin: 0 auto;
+
+
+   /* probably not needed anymore, but doesn't hurt */
+   -o-object-fit: contain;
+   object-fit: contain; 
+
+}
+
+ $(".nav a").on("click", function(){
+  $(".nav").find(".active").removeClass("active");
+  $(this).parent().addClass("active");
+});
+</style>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!--<a class="navbar-brand" href="#"><img alt="Comcast" src="http://www.userlogos.org/files/logos/macleod.mac/comcast.1.u.png" /></a>-->
+      <a class="navbar-brand" href="#"><img alt="Comcast" src="http://cdn04.androidauthority.net/wp-content/uploads/2015/07/comcast-logo-black.jpg" /></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+      <li><div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+        </li>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Estimates", estimates_path %></li>
+        <li><%= link_to "Surfaces", surfaces_path %></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master Data <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Portfolio", portfolios_path %></li>
+            <li><%= link_to "Role", roles_path %></li>
+            <li><%= link_to "ExternalOrganization", external_organizations_path %></li>
+            <li><%= link_to "SubOrganization", sub_organizations_path %></li>
+            <li><%= link_to "Responsibility", responsibilities_path %></li>
+            <li><%= link_to "LifeCycle", life_cycle_steps_path %></li>
+            <li><%= link_to "Task", tasks_path %></li>
+            <!--<li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>-->
+          </ul>
+        </li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

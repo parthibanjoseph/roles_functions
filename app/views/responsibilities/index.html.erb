@@ -1,0 +1,43 @@
+<div class="jumbotron">
+      <div class="container">
+        <h3>Responsibilities</h3>
+        <p></p>
+        <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+        <!--<img src="https://wiki.io.comcast.net/download/attachments/457016911/RolesFunctions.png?version=2&modificationDate=1455732242000" />-->
+      </div>
+</div>
+<div class="container">
+<table class="table table-hover">
+		<thead>
+			<tr>
+				
+				<td>Id</td>
+				<td>External Org</td>
+				<td>Sub Org</td>
+				<td>Responsibility</td>
+				<td>Created On</td>
+				<td>Updated On</td>
+			</tr>
+		</thead>
+		<% @responsibilities.each do |responsibility| %>
+		<tbody>
+			<tr>
+			<% subo = responsibility.sub_organization %>
+			<% exo = subo.external_organization %>
+				<td><%= responsibility.id %></td>
+				<td><%= exo.externalOrganizationName %></td>
+				<td><%= subo.subOrganizationName %></td>
+				<td><%= responsibility.responsibilityName %></td>
+				<td><%= responsibility.created_at.strftime "%B %e, %Y" %></td>
+				<td><%= responsibility.updated_at.strftime "%B %e, %Y" %></td>
+			</tr>
+		</tbody>
+		<% end %>
+	</table>
+	<hr>
+
+      <footer>
+        <p>&copy; 2016 Comcast</p>
+      </footer>
+    
+</div>

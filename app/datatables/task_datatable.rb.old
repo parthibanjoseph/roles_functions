@@ -1,0 +1,36 @@
+class TaskDatatable < AjaxDatatablesRails::Base
+
+  include AjaxDatatablesRails::Extensions::Kaminari
+
+  def sortable_columns
+    # Declare strings in this format: ModelName.column_name
+    @sortable_columns ||= [tasks.taskName]
+  end
+
+  def searchable_columns
+    # Declare strings in this format: ModelName.column_name
+    @searchable_columns ||= []
+  end
+
+  private
+
+  def data
+    records.map do |record|
+      [
+        # comma separated list of the values for each cell of a table row
+        # example: record.attribute,
+        record.taskName
+        
+
+      ]
+    end
+  end
+
+  def get_raw_records
+    # insert query here
+    #LifeCycleStep.joins(:tasks)
+    Task.all
+  end
+
+  # ==== Insert 'presenter'-like methods below if necessary
+end

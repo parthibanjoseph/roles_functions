@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  roleId: 1
+  roleName: MyString
+  seqNo: 1
+
+two:
+  roleId: 1
+  roleName: MyString
+  seqNo: 1

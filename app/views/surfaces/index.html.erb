@@ -1,0 +1,313 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<div class="jumbotron">
+      <div class="container">
+        <h3>Surfaces</h3>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="container">
+      	<div class="col-md-4 col-md-offset-4" style="padding-bottom: 10px">
+	      	<!--<div class="form-actions">
+	  			<button type="submit" class="btn btn-primary">Save changes</button>
+	  			<button type="button" class="btn">Cancel</button>
+			</div>-->
+		</div>
+		
+		<!--<div class="col-md-4" style="padding-bottom: 10px">
+			<div class="columns columns-right btn-group pull-right">
+				<!--<button class="btn btn-default" type="button" name="paginationSwitch" title="Hide/Show pagination">
+					<i class="glyphicon glyphicon-collapse-down icon-chevron-down"></i>
+				</button>
+				<button class="btn btn-default" type="button" name="refresh" title="Refresh">
+					<i class="glyphicon glyphicon-refresh icon-refresh"></i>
+				</button>
+				
+				<div class="export btn-group">
+					<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+						<i class="glyphicon glyphicon-export icon-share"></i> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<!--<li data-type="json"><a href="javascript:void(0)">JSON</a></li>
+						<li data-type="xml"><a href="javascript:void(0)">XML</a></li>
+						<li data-type="csv"><a href="javascript:void(0)">CSV</a></li>
+						<li data-type="txt"><a href="javascript:void(0)">TXT</a></li>
+						<li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>-->  <!--<div class="col-md-4" >-->
+
+		<div class="container-fluid">
+		<!-- Nav tabs -->
+	 	<ul class="nav nav-tabs" role="tablist">
+	    	<li role="presentation" class="active"><a href="#voice" aria-controls="voice" role="tab" data-toggle="tab">Voice and Messaging</a></li>
+	    	<li role="presentation"><a href="#eces" aria-controls="eces" role="tab" data-toggle="tab">ECES</a></li>
+	    	<li role="presentation"><a href="#sdd" aria-controls="sdd" role="tab" data-toggle="tab">SDD-PM</a></li>
+	  	</ul>
+
+
+	  	<!-- Tab panes -->
+	  	<div class="tab-content">
+	    	<div role="tabpanel" class="tab-pane active" id="voice">
+	    		<div class="container-fluid" >
+
+			<table data-toggle="table" class="table table-striped">
+			    <thead>
+			        <tr>
+			            <th><div class="th-inner sortable both" style="width: 174px;">Life Cycle</div></th>
+			            <th><div class="th-inner sortable both" style="width: 174px;">Tasks</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Leadership</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Voice Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">ECES Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Messaging Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">PM Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">SDD Working Surface</div></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    <% @portfolio = Portfolio.first %>
+			    <% @res = @portfolio.surfaces %>
+			    <% @sur = @portfolio.surfaces.group(:task_id).select("*,max(if(role_id=1 and isRelated=1,1,NULL)) as role_1, max(if(role_id=2 and isRelated=1,1,NULL)) as role_2, max(if(role_id=3 and isRelated=1,1,NULL)) as role_3, max(if(role_id=4 and isRelated=1,1,NULL)) as role_4, max(if(role_id=5 and isRelated=1,1,NULL)) as role_5, max(if(role_id=6 and isRelated=1,1,NULL)) as role_6") %>
+			    <% @sur.each do |surface| %>
+			        <tr>
+				        <% tsk = surface.task %>
+						<% lcycle = tsk.life_cycle_step %>
+						<% role1 = surface.isRelated %>
+						<td><%= lcycle.lifeCycleStepName %></td>
+						<td><%= link_to tsk.taskName, edit_surface_path(surface) %></td>
+						<!--<td class="bs-checkbox"><input data-index="0" name="btSelectItem" type="checkbox" value="799"><%= surface.isRelated %></td>-->
+						<td class="bs-checkbox">
+							<% if surface.role_1 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_2 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_3 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_4 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_5 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_6 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<!--<td class="bs-checkbox"><input data-index="0" name="btSelectItem" type="checkbox" value="799"></td>-->
+						</tr>
+			    <% end %>
+			    </tbody>
+			</table>
+	 	</div> <!-- end container-fluid-->
+	    	</div>
+	    	<div role="tabpanel" class="tab-pane" id="eces">
+	    		<div class="container-fluid" >
+
+			<table data-toggle="table" class="table table-striped">
+			    <thead>
+			        <tr>
+			            <th><div class="th-inner sortable both" style="width: 174px;">Life Cycle</div></th>
+			            <th><div class="th-inner sortable both" style="width: 174px;">Tasks</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Leadership</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Voice Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">ECES Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Messaging Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">PM Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">SDD Working Surface</div></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    <% @portfolio = Portfolio.second %>
+			    <% @res = @portfolio.surfaces %>
+			    <% @sur = @portfolio.surfaces.group(:task_id).select("*,max(if(role_id=1 and isRelated=1,1,NULL)) as role_1, max(if(role_id=2 and isRelated=1,1,NULL)) as role_2, max(if(role_id=3 and isRelated=1,1,NULL)) as role_3, max(if(role_id=4 and isRelated=1,1,NULL)) as role_4, max(if(role_id=5 and isRelated=1,1,NULL)) as role_5, max(if(role_id=6 and isRelated=1,1,NULL)) as role_6") %>
+			    <% @sur.each do |surface| %>
+			        <tr>
+				        <% tsk = surface.task %>
+						<% lcycle = tsk.life_cycle_step %>
+						<td><%= lcycle.lifeCycleStepName %></td>
+						<td><%= tsk.taskName %></td>
+						<td class="bs-checkbox">
+							<% if surface.role_1 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_2 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_3 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_4 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_5 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_6 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						</tr>
+			    <% end %>
+			    </tbody>
+			</table>
+	 	</div> <!-- end container-fluid-->
+	    	</div>
+	    	<div role="tabpanel" class="tab-pane" id="sdd">
+	    		<div class="container-fluid" >
+
+			<table data-toggle="table" class="table table-striped">
+			    <thead>
+			        <tr>
+			            <th><div class="th-inner sortable both" style="width: 174px;">Life Cycle</div></th>
+			            <th><div class="th-inner sortable both" style="width: 174px;">Tasks</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Leadership</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Voice Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">ECES Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">Messaging Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">PM Working Surface</div></th>
+			            <th><div class="fht-cell" style="width: 100px;">SDD Working Surface</div></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    <% @portfolio = Portfolio.third %>
+			    <% @res = @portfolio.surfaces %>
+			    <% @sur = @portfolio.surfaces.group(:task_id).select("*,max(if(role_id=1 and isRelated=1,1,NULL)) as role_1, max(if(role_id=2 and isRelated=1,1,NULL)) as role_2, max(if(role_id=3 and isRelated=1,1,NULL)) as role_3, max(if(role_id=4 and isRelated=1,1,NULL)) as role_4, max(if(role_id=5 and isRelated=1,1,NULL)) as role_5, max(if(role_id=6 and isRelated=1,1,NULL)) as role_6") %>
+			    <% @sur.each do |surface| %>
+			        <tr>
+				        <% tsk = surface.task %>
+						<% lcycle = tsk.life_cycle_step %>
+						<td><%= lcycle.lifeCycleStepName %></td>
+						<td><%= tsk.taskName %></td>
+						<td class="bs-checkbox">
+							<% if surface.role_1 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_2 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_3 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_4 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_5 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						<td class="bs-checkbox">
+							<% if surface.role_6 == 1 %>
+								<input checked="checked" data-index="0" name="btSelectItem" type="checkbox" value="799">
+
+							<% else %>
+								<input data-index="0" name="btSelectItem" type="checkbox" value="799">
+							<% end %>
+						</td>
+						</tr>
+			    <% end %>
+			    </tbody>
+			</table>
+	 	</div> <!-- end container-fluid-->
+	    	</div>
+  	  	</div>
+	</div>
+
+    	
+	 	
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 Comcast</p>
+      </footer>
+    </div> <!-- /container -->

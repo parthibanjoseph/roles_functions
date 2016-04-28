@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isRelated: MyString
+  role_id: 
+  task_id: 
+  portfolio_id: 
+  task_id: 
+  role_id: 
+
+two:
+  isRelated: MyString
+  role_id: 
+  task_id: 
+  portfolio_id: 
+  task_id: 
+  role_id: 

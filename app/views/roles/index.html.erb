@@ -1,0 +1,46 @@
+<div class="jumbotron">
+      <div class="container">
+        <h3>Roles</h3>
+        <p></p>
+
+      </div>
+</div>
+
+<!--<div class="container">
+	<%#= render 'form' %>
+</div>-->
+
+<div class="container">
+<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Role ID</th>
+				<th>Role Name</th>
+				<!--<td>Sequence #</td>-->
+				<th>Created On</th>
+				<th>Updated On</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+<% @roles.each do |role| %>
+	
+		<tbody>
+			<td><%= role.id %></td>
+			<td><%= role.roleName %></td>
+			<!--<td><%= role.seqNo %></td>-->
+			<td><%= role.created_at.strftime "%B %e, %Y" %></td>
+			<td><%= role.updated_at.strftime "%B %e, %Y" %></td>
+			<td class="actions">
+				<%= link_to("Edit", "#", :class => 'action edit') %>
+				<%= link_to("Delete", "#", :class => 'action delete') %>
+			</td>
+	</tbody>
+<% end %>
+	
+		
+	</table>
+	<footer>
+        <p>&copy; 2016 Comcast</p>
+      </footer>
+</div>
+

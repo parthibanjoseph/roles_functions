@@ -1,0 +1,8 @@
+<%= simple_form_for @surfaces do |f| %>
+  <%= f.input :isRelated, label: "Related", as: :check_boxes, required: true %>
+  <%= f.association :Portfolio, label: "Portfolio", required: true %>
+  <%= f.association :Task, label: "Task", required: true %>
+  <%= f.association :Role, label: "Role", required: true %>
+  <%= f.button :submit, "Save", class: "btn btn-primary" %>
+  <%= f.button :button, "Cancel", type: :reset, class: "btn btn-none" %>
+<% end %>

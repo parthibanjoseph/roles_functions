@@ -1,0 +1,206 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css"> 
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<div class="jumbotron">
+    <div class="container">
+        <h3>Estimates</h3>
+        <!--<div class="btn-group" data-toggle="buttons">
+  			<label class="btn btn-primary active">
+    			<input type="radio" name="options" id="option1" autocomplete="off" checked> Voice and Messaging
+  			</label>
+  			<label class="btn btn-primary">
+    			<input type="radio" name="options" id="option2" autocomplete="off"> ECES
+  			</label>
+  			<label class="btn btn-primary">
+    			<input type="radio" name="options" id="option3" autocomplete="off"> SDD-PM
+  			</label>
+		</div> --><!--	class="btn-group" -->
+    </div> <!-- class="container" -->
+</div> <!-- class="jumbotron" -->
+
+<div class="container">
+     
+    <!--<div class="dropdown col-md-2" style="padding-bottom: 10px">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    ExternalOrganizations
+		    <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li><a href="#">Business Unit</a></li>
+		    <li><a href="#">Engineering</a></li>
+		    <li><a href="#">Systems/Tools/Platforms</a></li>
+		    <li><a href="#">Infrastructure</a></li>
+		    <li><a href="#">Vendors</a></li>
+		    <li><a href="#">Standards Bodies</a></li>
+		 </ul>
+	</div> -->
+  	<div class="col-md-4 col-md-offset-4" style="padding-bottom: 10px">
+      	<!--<div class="form-actions">
+  			<button type="submit" class="btn btn-primary">Save changes</button>
+  			<button type="button" class="btn">Cancel</button>
+		</div>-->
+	</div>
+	<!--<div class="col-md-4" style="padding-bottom: 10px">
+		<div class="columns columns-right btn-group pull-right">
+			<!--<button class="btn btn-default" type="button" name="paginationSwitch" title="Hide/Show pagination">
+				<i class="glyphicon glyphicon-collapse-down icon-chevron-down"></i>
+			</button>
+			<button class="btn btn-default" type="button" name="refresh" title="Refresh">
+				<i class="glyphicon glyphicon-refresh icon-refresh"></i>
+			</button>
+			
+			<div class="export btn-group">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+					<i class="glyphicon glyphicon-export icon-share"></i> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<!--<li data-type="json"><a href="javascript:void(0)">JSON</a></li>
+					<li data-type="xml"><a href="javascript:void(0)">XML</a></li>
+					<li data-type="csv"><a href="javascript:void(0)">CSV</a></li>
+					<li data-type="txt"><a href="javascript:void(0)">TXT</a></li>
+					<!--<li data-type="sql"><a href="javascript:void(0)">SQL</a></li>
+					<li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>-->  <!--<div class="col-md-4" >-->
+
+	<div class="container">
+		
+
+	<div class="container-fluid">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#voice" aria-controls="voice" role="tab" data-toggle="tab">Voice and Messaging</a></li>
+            <li role="presentation"><a href="#eces" aria-controls="eces" role="tab" data-toggle="tab">ECES</a></li>
+            <li role="presentation"><a href="#sdd" aria-controls="sdd" role="tab" data-toggle="tab">SDD-PM</a></li>
+          </ul>
+		 	<!--<ul class="nav nav-tabs" role="tablist">
+		 	  <% @portfolios.each do |portfolio| %>
+		    	<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><%= portfolio.portfolioName %></a></li>
+		      <% end %>-->
+		    	<!--<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">ECES</a></li>
+		    	<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">SDD-PM</a></li>
+		  	</ul>-->
+
+	  		<!-- Tab panes -->
+		  	<div class="tab-content">
+		    	<div role="tabpanel" class="tab-pane active" id="voice">
+		    		<div class="container-fluid">
+						<table data-toggle="table" class="table table-striped">
+						<!--<table id="estimate" class="display" cellspacing="0" width="100%">-->
+						    <thead>
+						        <tr>
+						            <th><div class="th-inner sortable both">External Org</div></th>
+						            <th><div class="th-inner sortable both">Sub Org</div></th>
+						            <th><div class="th-inner sortable both">Responsibilities</div></th>
+						            <th>Total Tonnage</th>
+						            <th>Total Effort</th>
+						            
+						        </tr>
+						    </thead>
+						    <tbody>
+					             <% @portfolio = Portfolio.first %>
+					            <% @res = @portfolio.estimates.group(:responsibility_id).select("*,sum(tonnage) as tonnage_sum,sum(effort) as effort_sum") %>
+					            <% @res.each do |estimate| %>
+					            <tr>
+					              <% subo = estimate.responsibility.sub_organization %>
+					              <% exo = subo.external_organization %>
+								<td><%= exo.externalOrganizationName %></td>
+								<td><%= subo.subOrganizationName %></td>
+								<td><%= link_to estimate.responsibility.responsibilityName, {:action => 'edit', :responsibility_id => estimate.responsibility_id, :portfolio_id => @portfolio.id} %></td>
+								<td><%= estimate.tonnage_sum %> </td>
+								<td><%= estimate.effort_sum %></td>
+								
+								</tr>
+							<% end %>
+					    </tbody>
+					</table>
+
+			 	</div> <!-- class="container-fluid" -->
+	    	</div>
+	    	<div role="tabpanel" class="tab-pane" id="eces">
+	    		<div class="container-fluid">
+					<table data-toggle="table" class="table table-striped">
+					<!--<table id="estimate" class="display" cellspacing="0" width="100%">-->
+					    <thead>
+					        <tr>
+					            <th><div class="th-inner sortable both">External Org</div></th>
+					            <th><div class="th-inner sortable both">Sub Org</div></th>
+					            <th><div class="th-inner sortable both">Responsibilities</div></th>
+					            <th>Total Tonnage</th>
+					            <th>Total Effort</th>
+					            
+					        </tr>
+					    </thead>
+					    <tbody>
+					             <% @portfolio = Portfolio.second %>
+					            <% @res = @portfolio.estimates.group(:responsibility_id).select("*,sum(tonnage) as tonnage_sum,sum(effort) as effort_sum") %>
+					            <% @res.each do |estimate| %>
+					            <tr>
+					              <% subo = estimate.responsibility.sub_organization %>
+					              <% exo = subo.external_organization %>
+								<td><%= exo.externalOrganizationName %></td>
+								<td><%= subo.subOrganizationName %></td>
+								<td><%= link_to estimate.responsibility.responsibilityName, {:action => 'edit', :responsibility_id => estimate.responsibility_id, :portfolio_id => @portfolio.id} %></td>
+								<td><%= estimate.tonnage_sum %> </td>
+								<td><%= estimate.effort_sum %></td>
+								
+								</tr>
+							<% end %>
+					    </tbody>
+					</table>
+
+			 	</div> <!-- class="container-fluid" -->
+	    	</div>
+	    	<div role="tabpanel" class="tab-pane" id="sdd">
+	    		<div class="container-fluid">
+					<table data-toggle="table" class="table table-striped">
+					<!--<table id="estimate" class="display" cellspacing="0" width="100%">-->
+					    <thead>
+					        <tr>
+					            <th><div class="th-inner sortable both">External Org</div></th>
+					            <th><div class="th-inner sortable both">Sub Org</div></th>
+					            <th><div class="th-inner sortable both">Responsibilities</div></th>
+					            <th>Total Tonnage</th>
+					            <th>Total Effort</th>
+					            
+					        </tr>
+					    </thead>
+					    <tbody>
+					             <% @portfolio = Portfolio.third %>
+					            <% @res = @portfolio.estimates.group(:responsibility_id).select("*,sum(tonnage) as tonnage_sum,sum(effort) as effort_sum") %>
+					            <% @res.each do |estimate| %>
+					            <tr>
+					              <% subo = estimate.responsibility.sub_organization %>
+					              <% exo = subo.external_organization %>
+								<td><%= exo.externalOrganizationName %></td>
+								<td><%= subo.subOrganizationName %></td>
+								<td><%= link_to estimate.responsibility.responsibilityName, {:action => 'edit', :responsibility_id => estimate.responsibility_id, :portfolio_id => @portfolio.id} %></td>
+								<td><%= estimate.tonnage_sum %> </td>
+								<td><%= estimate.effort_sum %></td>
+								
+								</tr>
+							<% end %>
+					    </tbody>
+					</table>
+
+			 	</div> <!-- class="container-fluid" -->
+	    	</div>
+  	  	</div>
+	</div>
+
+	
+	 	
+	<hr>
+	
+	<footer>
+		<p>&copy; 2016 Comcast</p>
+	</footer>
+</div> <!-- /container -->

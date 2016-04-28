@@ -1,0 +1,6 @@
+<h1>Show Surfaces</h1>
+<%= simple_form_for @surface do |f| %>
+	<p>
+		<%=	f.select :task_id, Task.all.collect (|x| [x.taskName]) %>
+	</p>
+	<% end %>

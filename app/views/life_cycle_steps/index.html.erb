@@ -1,0 +1,45 @@
+<div class="jumbotron">
+      <div class="container">
+        <h3>Life Cycle Steps</h3>
+        <p></p>
+        
+      </div>
+</div>
+
+<!--<div class="container">
+	<%#= render 'form' %>
+</div>-->
+
+<div class="container">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Life Cycle ID</th>
+				<th>Life Cycle Name</th>
+				<th>Created On</th>
+				<th>Updated On</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<% @life_cycle_steps.each do |life_cycle_step| %>
+	
+			<tbody>
+				<td><%= life_cycle_step.id %></td>
+				<td><%= life_cycle_step.lifeCycleStepName %></td>
+				<td><%= life_cycle_step.created_at.strftime "%B %e, %Y" %></td>
+				<td><%= life_cycle_step.updated_at.strftime "%B %e, %Y" %></td>
+				<td class="actions">
+					<%= link_to("Edit", "#", :class => 'action edit') %>
+					<%= link_to("Delete", "#", :class => 'action delete') %>
+				</td>
+			</tbody>
+		<% end %>
+	</table>
+	<hr>
+
+      <footer>
+        <p>&copy; 2016 Comcast</p>
+      </footer>
+    
+</div>
+

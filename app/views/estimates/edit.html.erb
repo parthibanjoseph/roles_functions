@@ -1,0 +1,60 @@
+<div class="jumbotron">
+  <div class="container">
+    <h3>Edit Estimates</h3>
+    <p></p>
+  </div>
+</div>
+<div class="container">
+	<div class="container-fluid">
+		<div class="tab-content">
+		    	<div role="tabpanel" class="tab-pane active" id="voice">
+		    		<div class="container-fluid">
+						<table data-toggle="table" class="table table-striped">
+						<!--<table id="estimate" class="display" cellspacing="0" width="100%">-->
+						    <thead>
+						        <tr>
+						            <th><div class="th-inner sortable both">Portfolio</div></th>
+						            <!--<th><div class="th-inner sortable both">External Org</div></th>
+						            <th><div class="th-inner sortable both">Sub Org</div></th>-->
+						            <th><div class="th-inner sortable both">Responsibilities</div></th>
+						            <th><div class="th-inner sortable both">Task</div></th>
+						            <th>Tonnage</th>
+						            <th>Effort</th>
+						            
+						        </tr>
+						    </thead>
+						    <tbody>
+					             <%# @portfolio = Portfolio.first %>
+					            <%# @res = @portfolio.estimates.all(:responsibility_id) %>
+					            <%# @res.each do |estimate| %>
+					            <% @estimates.each do |estimate| %>
+					            <tr>
+					            	<td><%= estimate.portfolio.portfolioName %></td>
+					            	<!--<td><%#= estimate.external_organization.externalOrganizationName %></td>
+					            	<td><%#= @estimates.sub_organization.subOrganizationName %></td>-->
+					            	<td><%= estimate.responsibility.responsibilityName %></td>
+					            	<td><%= estimate.task.taskName %></td>
+					            	<td><%= estimate.tonnage %></td>
+					            	<td><%= estimate.effort %></td>
+					            </tr>
+					            <% end %>
+					            <!--<tr>
+					              <%# subo = estimate.responsibility.sub_organization %>
+					              <%# exo = subo.external_organization %>
+								<td><%#= exo.externalOrganizationName %></td>
+								<td><%#= subo.subOrganizationName %></td>
+								<td><%#= link_to estimate.responsibility.responsibilityName, {:action => 'show'} %></td>
+								<td><%#= estimate.task.taskName %></td>
+								<td><%#= estimate.tonnage_sum %> </td>
+								<td><%#= estimate.effort_sum %></td>
+								
+								</tr>-->
+							<%# end %>
+					    </tbody>
+					</table>
+
+			 	</div> <!-- class="container-fluid" -->
+			</div>
+		</div>
+	</div>
+</div>

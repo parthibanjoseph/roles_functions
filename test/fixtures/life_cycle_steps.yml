@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lifeCycleStepId: 1
+  lifeCycleStepName: MyString
+  seqNo: 1
+
+two:
+  lifeCycleStepId: 1
+  lifeCycleStepName: MyString
+  seqNo: 1

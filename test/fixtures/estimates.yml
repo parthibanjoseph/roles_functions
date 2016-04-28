@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tonnage: 1
+  effort: 1
+  responsibility_id: 
+  task_id: 
+  portfolio_id: 
+
+two:
+  tonnage: 1
+  effort: 1
+  responsibility_id: 
+  task_id: 
+  portfolio_id: 

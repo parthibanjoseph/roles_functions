@@ -1,0 +1,41 @@
+
+<div class="jumbotron">
+      <div class="container">
+        <h3>External Organizations</h3>
+        <p></p>
+
+      </div>
+</div>
+
+<div class="container">
+
+
+<%= render 'form' %>
+</div>
+
+<div class="container">
+<table class="table table-hover">
+		<thead>
+			<tr>
+				<td>Organization ID</td>
+				<td>Organization Name</td>
+				<td>Sequence #</td>
+				<td>Created On</td>
+				<td>Updated On</td>
+			</tr>
+		</thead>
+<%= @external_organizations.each do |external_organization| %>
+	
+		<tbody>
+			<td><%= external_organization.id %></td>
+			<td><%= external_organization.externalOrganizationName %></td>
+			<td><%= external_organization.seqNo %></td>
+			<td><%= external_organization.created_at %></td>
+			<td><%= external_organization.updated_at %></td>
+	</tbody>
+<% end %>
+	
+		
+	</table>
+
+</div>

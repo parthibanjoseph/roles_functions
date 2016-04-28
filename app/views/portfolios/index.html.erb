@@ -1,0 +1,50 @@
+<div class="jumbotron">
+      <div class="container">
+        <h3>Portfolios</h3>
+        <p></p>
+        
+      </div>
+</div>
+
+<!--<div class="container">
+	<%#= render 'form' %>
+</div>-->
+
+<div class="container">
+<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Portfolio ID</th>
+				<th>Portfolio Name</th>
+				<!--<th>Sequence #</th>-->
+				<th>Created On</th>
+				<th>Updated On</th>
+				<th>Actions</th>
+
+			</tr>
+		</thead>
+<% @portfolios.each do |portfolio| %>
+	
+		<tbody>
+			<td><%= portfolio.id %></td>
+			<td><%= portfolio.portfolioName %></td>
+			<!--<td><%= portfolio.seqNo %></td>-->
+			<td><%= portfolio.created_at.strftime "%B %e, %Y" %></td>
+			<td><%= portfolio.updated_at.strftime "%B %e, %Y" %></td>
+			<td class="actions">
+				<%= link_to("Edit", "#", :class => 'action edit') %>
+				<%= link_to("Delete", "#", :class => 'action delete') %>
+			</td>
+	</tbody>
+<% end %>
+	
+		
+	</table>
+
+<hr>
+
+      <footer>
+        <p>&copy; 2016 Comcast</p>
+      </footer>
+    </div> <!-- /container -->
+</div>

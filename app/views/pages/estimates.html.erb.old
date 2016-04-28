@@ -1,0 +1,135 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<div class="jumbotron">
+    <div class="container">
+        <h3>Estimates</h3>
+    </div> <!-- class="container" -->
+</div> <!-- class="jumbotron" -->
+
+<div class="container">
+  	<div class="col-md-4 col-md-offset-4" style="padding-bottom: 10px">
+      	<div class="form-actions">
+  			<button type="submit" class="btn btn-primary">Save changes</button>
+  			<button type="button" class="btn">Cancel</button>
+		</div>
+	</div>
+	<div class="col-md-4" style="padding-bottom: 10px">
+		<div class="columns columns-right btn-group pull-right">
+			<!--<button class="btn btn-default" type="button" name="paginationSwitch" title="Hide/Show pagination">
+				<i class="glyphicon glyphicon-collapse-down icon-chevron-down"></i>
+			</button>-->
+			<button class="btn btn-default" type="button" name="refresh" title="Refresh">
+				<i class="glyphicon glyphicon-refresh icon-refresh"></i>
+			</button>
+			
+			<div class="export btn-group">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+					<i class="glyphicon glyphicon-export icon-share"></i> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li data-type="json"><a href="javascript:void(0)">JSON</a></li>
+					<li data-type="xml"><a href="javascript:void(0)">XML</a></li>
+					<li data-type="csv"><a href="javascript:void(0)">CSV</a></li>
+					<li data-type="txt"><a href="javascript:void(0)">TXT</a></li>
+					<li data-type="sql"><a href="javascript:void(0)">SQL</a></li>
+					<li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>
+				</ul>
+			</div>
+		</div>
+	</div><!--/<div class="col-md-4" >-->
+
+	<div class="container-fluid">
+		<!-- Nav tabs -->
+	 	<ul class="nav nav-tabs" role="tablist">
+	    	<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Voice and Messaging</a></li>
+	    	<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">ECES</a></li>
+	    	<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">SDD-PM</a></li>
+	  	</ul>
+
+	  	<!-- Tab panes -->
+	  	<div class="tab-content">
+	    	<div role="tabpanel" class="tab-pane active" id="voice">...</div>
+	    	<div role="tabpanel" class="tab-pane" id="eces">...</div>
+	    	<div role="tabpanel" class="tab-pane" id="sdd">...</div>
+  	  	</div>
+	</div>
+
+	<div class="container-fluid">
+		<table data-toggle="table" class="table table-striped">
+		    <thead>
+		        <tr>
+		            <th><div class="th-inner sortable both">External Org</div></th>
+		            <th><div class="th-inner sortable both">Sub Org</div></th>
+		            <th><div class="th-inner sortable both">Responsibilities</div></th>
+		            <th>Tonnage</th>
+		            <th>Effort</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+					<td>Business Unit</td>
+					<td>Denice H</td>
+					<td>Product Dev</td>
+					<td>127</td>
+					<td>116</td>
+				</tr>
+				<tr>
+					<td>Business Unit</td>
+					<td>Ray D</td>
+					<td>Product Deployment</td>
+					<td>167</td>
+					<td>134</td>
+				</tr>
+				<tr>
+					<td>Business Unit</td>
+					<td>Tracy P</td>
+					<td>Business Care</td>
+					<td>125</td>
+					<td>116</td>
+				</tr>
+				<tr>
+					<td>Business Unit</td>
+					<td>Tracy P</td>
+					<td>Business OPS</td>
+					<td>87</td>
+					<td>76</td>
+				</tr>
+				<tr>
+					<td>Business Unit</td>
+					<td>Kevin</td>
+					<td>New Business Solutions</td>
+					<td>54</td>
+					<td>53</td>
+				</tr>
+				<tr>
+					<td>Business Unit</td>
+					<td>Glen K</td>
+					<td>Enterprise & Managed Services</td>
+					<td>8</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>Business Unit</td>
+					<td>David Allen</td>
+					<td>Carrier Services</td>
+					<td>0</td>
+					<td>0</td>	
+				</tr>
+		    </tbody>
+		</table>
+
+ 	</div> <!-- class="container-fluid" -->
+	 	
+	<hr>
+	
+	<footer>
+		<p>&copy; 2016 Comcast</p>
+	</footer>
+</div> <!-- /container -->

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  responsibilityName: MyString
+  subOrganizationType: MyString
+  seqNo: 1
+  sub_organization_id: 
+
+two:
+  responsibilityName: MyString
+  subOrganizationType: MyString
+  seqNo: 1
+  sub_organization_id: 

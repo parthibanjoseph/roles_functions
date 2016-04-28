@@ -1,0 +1,6 @@
+<%= simple_form_for @life_cycle_step do |f| %>
+  <%= f.input :lifeCycleStepName, label: "Life Cycle Name", required: true %>
+  <!--<%= f.input :seqNo, label: "Sequence No" , required: true %>-->
+  <%= f.button :submit, "Save", class: "btn btn-primary" %>
+  <%= f.button :button, "Cancel", type: :reset, class: "btn btn-none" %>
+<% end %>

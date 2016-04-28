@@ -1,0 +1,6 @@
+<%= simple_form_for @portfolio do |f| %>
+  <%= f.input :portfolioName, label: "Portfolio Name", required: true %>
+  
+  <%= f.button :submit, "Save", class: "btn btn-primary" %>
+  <%= f.button :button, "Cancel", type: :reset, class: "btn btn-none" %>
+<% end %>

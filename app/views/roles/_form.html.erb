@@ -1,0 +1,5 @@
+<%= simple_form_for @role do |f| %>
+  <%= f.input :roleName, label: "Role Name", required: true %>
+  <%= f.button :submit, "Save", class: "btn btn-primary" %>
+  <%= f.button :button, "Cancel", type: :reset, class: "btn btn-none" %>
+<% end %>
